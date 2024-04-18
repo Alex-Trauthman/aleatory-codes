@@ -1,11 +1,13 @@
 package aula3;
 
 public class No{
-	private int elemento;
-	private No proximo;
+	int elemento;
+	No proximo;
+	No anterior;
 	public No(int valor) {
 		this.elemento = valor;
 		this.proximo = null;
+		this.anterior = null;
 	}
 	public int getElemento() {
 		return elemento;
@@ -18,6 +20,12 @@ public class No{
 	}
 	public void setProximo(No proximo) {
 		this.proximo = proximo;
+	}
+	public void setAnterior(No anterior) {
+		this.anterior = anterior;
+	}
+	public No getAnterior() {
+		return anterior;
 	}
 	
 }
