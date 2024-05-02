@@ -28,6 +28,23 @@ public class No{
 	public No getEsquerda() {
 		return esquerda;
 	}
+	@Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("No{elemento=").append(elemento);
+        if (esquerda != null) {
+            builder.append(", esquerda=").append(esquerda.getElemento());
+        } else {
+            builder.append(", esquerda=null");
+        }
+        if (direita != null) {
+            builder.append(", direita=").append(direita.getElemento());
+        } else {
+            builder.append(", direita=null");
+        }
+        builder.append('}');
+        return builder.toString();
+    }
 	
 	
 }
