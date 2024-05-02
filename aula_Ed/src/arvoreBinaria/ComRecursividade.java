@@ -64,6 +64,20 @@ public class ComRecursividade {
 		imprimirPosOrdem(noAtual.getDireita());
 		System.out.println(noAtual.getElemento());
 	}
+	public No buscar(int elemento) {
+        No noAtual = noRaiz;
+        while (noAtual != null) {
+            if (elemento == noAtual.getElemento()) {
+                return noAtual;
+            } else if (elemento < noAtual.getElemento()) {
+                noAtual = noAtual.getEsquerda();
+            } else {
+                noAtual = noAtual.getDireita();
+            }
+        }
+        return null;
+    }
+	
 
 	public static void main(String[] args) {
 		ComRecursividade carlinhos = new ComRecursividade();
@@ -81,5 +95,6 @@ public class ComRecursividade {
 		carlinhos.imprimirOrdenado(carlinhos.noRaiz);
 		System.out.println("\n ---------- \n");
 		carlinhos.imprimirPosOrdem(carlinhos.noRaiz);
+		System.out.println(carlinhos.buscar(9));
 	}
 }
