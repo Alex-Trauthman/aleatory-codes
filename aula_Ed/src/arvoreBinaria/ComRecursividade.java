@@ -37,6 +37,27 @@ public class ComRecursividade {
 			}
 		}
 	}
+	public int altura(No noDado) {
+		No noAtual = noDado;
+		direita = 0 ;
+		esquerda = 0;
+		if (noAtual == null ) {
+			return 0;
+		}
+		if (noAtual.getDireita()!= null) {
+			direita = altura(noAtual.getDireita());
+			
+		}
+		if( noAtual.getEsquerda()!= null) {
+			esquerda = altura(noAtual.getEsquerda());
+		}
+		if(noAtual == noRaiz) {
+			return ((direita > esquerda) ? direita : esquerda);
+		}
+		
+		return 1 + ((direita > esquerda) ? direita : esquerda);
+	}
+	
 	public void remover(int elemento) {
 	    No pai = null;
 	    No noAtual = noRaiz;
@@ -133,15 +154,28 @@ public class ComRecursividade {
 
 	public static void main(String[] args) {
 		ComRecursividade carlinhos = new ComRecursividade();
+		System.out.println("\n Altura");
+		System.out.println("------------\n");
+		System.out.println(carlinhos.altura(carlinhos.noRaiz=));
 		carlinhos.inserirNo(carlinhos.noRaiz, 5);
+		System.out.println("\n Altura");
+		System.out.println("------------\n");
+		System.out.println(carlinhos.altura(carlinhos.noRaiz));
 		carlinhos.inserirNo(carlinhos.noRaiz, 3);
 		carlinhos.inserirNo(carlinhos.noRaiz, 4);
 		carlinhos.inserirNo(carlinhos.noRaiz, 1);
+		System.out.println("\n Altura");
+		System.out.println("------------\n");
+		System.out.println(carlinhos.altura(carlinhos.noRaiz));
 		carlinhos.inserirNo(carlinhos.noRaiz, 2);
 		carlinhos.inserirNo(carlinhos.noRaiz, 8);
 		carlinhos.inserirNo(carlinhos.noRaiz, 7);
 		carlinhos.inserirNo(carlinhos.noRaiz, 9);
 		carlinhos.inserirNo(carlinhos.noRaiz, 6);
+		carlinhos.inserirNo(carlinhos.noRaiz, 10);
+		System.out.println("\n Altura");
+		System.out.println("------------\n");
+		System.out.println(carlinhos.altura(carlinhos.noRaiz));
 		System.out.println("\n Pre Ordem ");
 		carlinhos.imprimirPreOrdem(carlinhos.noRaiz);
 		System.out.println("\n ORDENADO");
@@ -152,11 +186,12 @@ public class ComRecursividade {
 		carlinhos.imprimirPosOrdem(carlinhos.noRaiz);
 		System.out.println("\n BUSCAR");
 		System.out.println("------------\n");
-		System.out.println(carlinhos.buscar(9));
-		carlinhos.remover(5);
+		System.out.println(carlinhos.buscar(8));
+		carlinhos.remover(7);
 		System.out.println("\n Removido");
 		System.out.println("------------\n");
 		carlinhos.imprimirOrdenado(carlinhos.noRaiz);
+		System.out.println("\n Removido");
 		
 	}
 }
