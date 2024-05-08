@@ -110,6 +110,8 @@ public class ComRecursividade {
 	        }
 	    }
 	}
+	
+	
 
 	public void imprimirPreOrdem(No noAtual) {
 			if (noAtual== null){
@@ -121,6 +123,46 @@ public class ComRecursividade {
 				imprimirPreOrdem(noAtual.getDireita());
 			
 	}
+	private boolean isEstritamenteBinaria(No no) {
+        if (no == null)
+            return true;
+        if (no.getEsquerda() == null && no.getDireita() == null)
+            return true;
+        if (no.getEsquerda() != null && no.getDireita() != null)
+            return isEstritamenteBinaria(no.getEsquerda()) && isEstritamenteBinaria(no.getDireita());
+        return false;
+    }
+
+    private boolean isCompleta(No no, int indice, int totalNos) {
+        if (no == null)
+            return true;
+        if (indice >= totalNos)
+            return false;
+        return (isCompleta(no.getEsquerda(), 2 * indice + 1, totalNos) &&
+                isCompleta(no.getDireita(), 2 * indice + 2, totalNos));
+    }
+
+    private int contarNos(No no) {
+        if (no == null)
+            return 0;
+        return 1 + contarNos(no.getEsquerda()) + contarNos(no.getDireita());
+    }
+
+    private boolean isCheia(No no) {
+        int totalNos = contarNos(no);
+        int indice = 0;
+        return isCompleta(no, indice, totalNos);
+    }
+
+
+    public String determinarTipoArvore(No raiz) {
+        if (isEstritamenteBinaria(raiz))
+            return "Árvore estritamente binária.";
+        else if (isCheia(raiz))
+            return "Árvore binária cheia.";
+        else
+            return "Árvore binária completa.";
+    }
 	public void imprimirOrdenado(No noAtual) {
 	    if (noAtual == null) {
 	        return;
@@ -176,22 +218,13 @@ public class ComRecursividade {
 		System.out.println("\n Altura");
 		System.out.println("------------\n");
 		System.out.println(carlinhos.altura(carlinhos.noRaiz));
-		System.out.println("\n Pre Ordem ");
-		carlinhos.imprimirPreOrdem(carlinhos.noRaiz);
-		System.out.println("\n ORDENADO");
-		System.out.println("------------\n");
-		carlinhos.imprimirOrdenado(carlinhos.noRaiz);
-		System.out.println("\n Pos Ordem");
-		System.out.println("------------\n");
-		carlinhos.imprimirPosOrdem(carlinhos.noRaiz);
-		System.out.println("\n BUSCAR");
-		System.out.println("------------\n");
-		System.out.println(carlinhos.buscar(8));
 		carlinhos.remover(8);
 		System.out.println("\n Removido");
 		System.out.println("------------\n");
 		carlinhos.imprimirOrdenado(carlinhos.noRaiz);
-		
+		System.out.println("\n Tipo");
+		System.out.println("------------\n");
+		System.out.println(carlinhos.determinarTipoArvore(carlinhos.noRaiz));
 		
 	}
 }
