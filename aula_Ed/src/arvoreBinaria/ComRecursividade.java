@@ -39,8 +39,8 @@ public class ComRecursividade {
 	}
 	public int altura(No noDado) {
 		No noAtual = noDado;
-		direita = 0 ;
-		esquerda = 0;
+		int direita = 0 ;
+		int esquerda = 0;
 		if (noAtual == null ) {
 			return 0;
 		}
@@ -86,7 +86,7 @@ public class ComRecursividade {
 	            noRaiz = null;
 	        }
 	    } else if (noAtual.getEsquerda() != null && noAtual.getDireita() != null) {
-	        No sucessor = noAtual.getDireita();
+	        No sucessor = noAtual;
 	        while (sucessor.getEsquerda() != null) {
 	            pai = sucessor;
 	            sucessor = sucessor.getEsquerda();
@@ -156,7 +156,7 @@ public class ComRecursividade {
 		ComRecursividade carlinhos = new ComRecursividade();
 		System.out.println("\n Altura");
 		System.out.println("------------\n");
-		System.out.println(carlinhos.altura(carlinhos.noRaiz=));
+		System.out.println(carlinhos.altura(carlinhos.noRaiz));
 		carlinhos.inserirNo(carlinhos.noRaiz, 5);
 		System.out.println("\n Altura");
 		System.out.println("------------\n");
@@ -187,11 +187,11 @@ public class ComRecursividade {
 		System.out.println("\n BUSCAR");
 		System.out.println("------------\n");
 		System.out.println(carlinhos.buscar(8));
-		carlinhos.remover(7);
+		carlinhos.remover(8);
 		System.out.println("\n Removido");
 		System.out.println("------------\n");
 		carlinhos.imprimirOrdenado(carlinhos.noRaiz);
-		System.out.println("\n Removido");
+		
 		
 	}
 }
